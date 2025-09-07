@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -47,6 +48,7 @@ class UserController extends Controller
         $user->username  = $request->username;
         $user->email     = $request->email;
         $user->phone     = $request->phone;
+        /** @var User $user */
         $user->save();
 
         return redirect()->back()->with('success', 'แก้ไขข้อมูลเรียบร้อยแล้ว');

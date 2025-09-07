@@ -3,7 +3,6 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <!-- Hero Section -->
     <section id="hero" class="py-5 text-center bg-light mb-5">
         <div class="container">
             <h1 class="display-4">Welcome to Music Studio</h1>
@@ -15,10 +14,8 @@
     <h1 class="mb-4">Welcome, Admin!</h1>
     <p>นี่คือหน้า Dashboard ของผู้ดูแลระบบ</p>
 
-    <!-- Dashboard Cards -->
     <div class="row">
-        <!-- Users Card -->
-        <div class="col-md-4 mb-3">
+        <div class="col-12 col-sm-6 col-md-4 mb-3">
             <div class="card text-center">
                 <div class="card-body">
                     <h5 class="card-title">Users</h5>
@@ -28,8 +25,7 @@
             </div>
         </div>
 
-        <!-- Rooms Card -->
-        <div class="col-md-4 mb-3">
+        <div class="col-12 col-sm-6 col-md-4 mb-3">
             <div class="card text-center">
                 <div class="card-body">
                     <h5 class="card-title">Rooms</h5>
@@ -39,8 +35,7 @@
             </div>
         </div>
 
-        <!-- Bookings Card -->
-        <div class="col-md-4 mb-3">
+        <div class="col-12 col-sm-6 col-md-4 mb-3">
             <div class="card text-center">
                 <div class="card-body">
                     <h5 class="card-title">Bookings</h5>

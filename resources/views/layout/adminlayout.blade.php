@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') | Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
         /* Minimal dropdown styling */
         .dropdown-menu {
@@ -34,7 +35,13 @@
         .navbar-dark .navbar-nav .nav-link {
             font-weight: 500;
         }
+
+        .modal-backdrop.show {
+            backdrop-filter: blur(20px); /* ระดับความเบลอ */
+            background-color: rgba(0, 0, 0, 0.4); /* เพิ่มความมืดนิดหน่อย */
+        }
     </style>
+    @stack('styles')
 </head>
 
 <body class="bg-light">
@@ -83,7 +90,7 @@
                     <a href="{{ route('admin.rooms') }}" class="list-group-item list-group-item-action">Rooms</a>
                     <a href="{{ route('admin.promotions') }}"
                         class="list-group-item list-group-item-action">Promotions</a>
-                    <a href="{{ route('admin.instruments') }}" class="list-group-item list-group-item-action">Musical
+                    <a href="{{ route('admin.instrumentCategories') }}" class="list-group-item list-group-item-action">Musical
                         Instrument</a>
                     <a href="{{ route('admin.log') }}" class="list-group-item list-group-item-action">Log</a>
                 </div>
@@ -98,6 +105,8 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    @stack('scripts')
 
 </body>
 

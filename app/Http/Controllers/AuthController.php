@@ -14,37 +14,41 @@ use Illuminate\Support\Facades\Mail;
 class AuthController extends Controller
 {
     // Show login form
-    public function loginForm() {
+    public function loginForm()
+    {
         return view('auth.login');
     }
 
     // Handle login
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
         $request->validate([
-            'login' => 'required', // จะใช้กรอก username หรือ email
+            'login' => 'required',
             'password' => 'required',
         ]);
 
         $loginInput = $request->login;
 
-        // หา user โดย username หรือ email
         $user = User::where('username', $loginInput)
-                    ->orWhere('email', $loginInput)
-                    ->first();
+            ->orWhere('email', $loginInput)
+            ->first();
 
         if ($user && Hash::check($request->password, $user->password_hash)) {
-            Auth::login($user); // login ผ่าน Laravel Auth
+            Auth::login($user);
+
             if ($user->role === 'admin') {
-                return redirect('/admin/dashboard');
+                return redirect()->route('admin.dashboard'); // ✅ ใช้ route name
             }
-            return redirect('/user/home'); // หรือ redirect('/home') ตามต้องการ
+            return redirect()->route('user.home'); // ✅ ไป user home
         }
 
         return back()->withErrors(['login' => 'Username/Email หรือรหัสผ่านไม่ถูกต้อง']);
     }
 
+
     // Logout
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         Auth::logout(); // ลบ session ของ Laravel Auth
         $request->session()->invalidate(); // ล้าง session ทั้งหมด
         $request->session()->regenerateToken(); // สร้าง CSRF token ใหม่
@@ -52,12 +56,14 @@ class AuthController extends Controller
     }
 
     // Show register form
-    public function registerForm() {
+    public function registerForm()
+    {
         return view('auth.register');
     }
 
     // Handle register
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
@@ -82,17 +88,19 @@ class AuthController extends Controller
     }
 
     // Show forgot password form
-    public function forgotPasswordForm() {
+    public function forgotPasswordForm()
+    {
         return view('auth.forgot-password');
     }
 
     // Send reset link
-    public function sendResetLink(Request $request) {
+    public function sendResetLink(Request $request)
+    {
         // ตรวจสอบค่าอีเมล
         $request->validate(['email' => 'required|email']);
 
         $user = User::where('email', $request->email)->first();
-        if(!$user) {
+        if (!$user) {
             return back()->withErrors(['email' => 'ไม่พบอีเมลนี้ในระบบ']);
         }
 
@@ -110,13 +118,14 @@ class AuthController extends Controller
     }
 
     // Show reset password form
-    public function resetPasswordForm($token) {
+    public function resetPasswordForm($token)
+    {
         $reset = PasswordReset::where('reset_token', $token)
-                    ->where('used', false)
-                    ->where('expires_at', '>', Carbon::now())
-                    ->first();
+            ->where('used', false)
+            ->where('expires_at', '>', Carbon::now())
+            ->first();
 
-        if(!$reset) {
+        if (!$reset) {
             return redirect('/login')->withErrors(['token' => 'ลิงก์หมดอายุหรือใช้แล้ว']);
         }
 
@@ -124,18 +133,19 @@ class AuthController extends Controller
     }
 
     // Handle reset password
-    public function resetPassword(Request $request) {
+    public function resetPassword(Request $request)
+    {
         $request->validate([
             'token' => 'required',
             'password' => 'required|confirmed|min:6'
         ]);
 
         $reset = PasswordReset::where('reset_token', $request->token)
-                    ->where('used', false)
-                    ->where('expires_at', '>', Carbon::now())
-                    ->first();
+            ->where('used', false)
+            ->where('expires_at', '>', Carbon::now())
+            ->first();
 
-        if(!$reset) {
+        if (!$reset) {
             return redirect('/login')->withErrors(['token' => 'ลิงก์หมดอายุหรือใช้แล้ว']);
         }
 
@@ -148,5 +158,4 @@ class AuthController extends Controller
 
         return redirect('/login')->with('success', 'รีเซ็ตรหัสผ่านสำเร็จ สามารถ Login ได้เลย');
     }
-
 }

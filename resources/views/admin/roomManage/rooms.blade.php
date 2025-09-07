@@ -14,6 +14,18 @@
         </div>
     @endif
 
+    {{-- แสดง Error แบบ alert --}}
+    @if ($errors->any() && ! $errors->hasBag('instrumentRoom'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
+
     {{-- ฟอร์มเพิ่มห้อง --}}
     <div class="card mb-4 border-0 shadow-sm">
         <div class="card-body">
@@ -54,6 +66,7 @@
                         <th>จำนวนคน</th>
                         <th>รายละเอียด</th>
                         <th>รูป</th>
+                        <th>เครื่องดนตรี</th>
                         <th>จัดการ</th>
                     </tr>
                 </thead>
@@ -70,6 +83,11 @@
                             @else
                                 <span class="text-muted small">ไม่มีรูป</span>
                             @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.rooms.instruments', $room->room_id) }}" class="btn btn-sm btn-info">
+                                จัดการเครื่องดนตรี ({{ $room->instruments->count() }})
+                            </a>
                         </td>
                         <td>
                             <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-2">

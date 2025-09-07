@@ -17,4 +17,10 @@ class Room extends Model
     ];
 
     public $timestamps = false;
+
+    public function instruments()
+    {
+        return $this->belongsToMany(Instrument::class, 'room_instruments', 'room_id', 'instrument_id')
+                    ->withPivot('quantity');
+    }
 }
