@@ -424,4 +424,27 @@ class BookingController extends Controller
         return $pdf->download("Receipt_{$receipt->receipt_number}.pdf");
     }
 
+    // ---------------------------------- Admin Statue Edit ----------------------------------- //
+    public function updateStatus(Request $request, Booking $booking)
+    {
+        // Validate input
+        $request->validate([
+            'status' => 'required|in:pending,confirmed,cancelled,complete'
+        ]);
+
+        $oldStatus = $booking->status;
+        $booking->status = $request->status;
+        $booking->save();
+
+        // Log activity (ถ้ามี ActivityLog)
+        ActivityLog::create([
+            'user_id' => auth()->id(),
+            'role' => 'admin',
+            'action_type' => 'Update Booking Status',
+            'details' => "Booking ID {$booking->id} status changed from {$oldStatus} to {$booking->status}",
+        ]);
+
+        return back()->with('success', "Booking status updated successfully.");
+    }
+
 }

@@ -22,6 +22,10 @@ class ActivityLog extends Model
         'details',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
+
     // Relationship กับ User
     public function user()
     {

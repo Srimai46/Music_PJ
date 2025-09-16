@@ -10,7 +10,6 @@ use App\Models\Promotion;
 use App\Models\BookingAddon;
 use App\Models\Payment;
 use App\Models\Receipt;
-use Carbon\Carbon;
 
 
 class Booking extends Model

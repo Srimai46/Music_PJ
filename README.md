@@ -41,6 +41,16 @@ Open terminal in your `htdocs` (or local server directory) and run:
    ```
 ---
 
+Setup before start server:
+
+    Storage
+    php artisan storage:link
+
+    PDF
+    composer require barryvdh/laravel-dompdf
+
+---
+
 ## 🏃‍♂️ Run Project
 
 Start the Laravel development server:
@@ -65,5 +75,6 @@ Access your project at:
 ### 🛠 Admin Accounts
 - `admin` — **admin@gmail.com** — `adminniggaupdate12345Test`  
 - `test2` — **test2@gmail.com** — `12345678`
+- `TesterLast` — **Tester@gmail.com** — `12345678`
 
 ---

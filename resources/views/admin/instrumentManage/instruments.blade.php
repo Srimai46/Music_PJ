@@ -114,7 +114,8 @@
                             <i class="bi bi-house-fill fs-6"></i>
                         </button>
 
-                        <form action="{{ route('admin.instruments.delete', $instrument->instrument_id) }}" method="POST" onsubmit="return confirm('ยืนยันการลบ?');" class="d-inline-flex m-0 p-0">
+                        {{-- ลบเครื่องดนตรี --}}
+                        <form class="delete-instrument-form d-inline-flex m-0 p-0" action="{{ route('admin.instruments.delete', $instrument->instrument_id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-outline-danger rounded-circle shadow-sm"
@@ -197,7 +198,6 @@
                         </div>
 
                         <div class="modal-body p-4">
-
                             {{-- ฟอร์มเพิ่มห้องให้เครื่องดนตรี --}}
                             <div class="card mb-4 shadow-sm rounded-3 border-0 bg-white bg-opacity-50" style="backdrop-filter: blur(8px);">
                                 <div class="card-body">
@@ -264,7 +264,7 @@
                                                         </form>
 
                                                         {{-- ลบห้อง --}}
-                                                        <form action="{{ route('admin.instruments.detachRoom', [$instrument->instrument_id, $room->room_id]) }}" method="POST" onsubmit="return confirm('แน่ใจว่าต้องการลบห้องนี้ออก?');" class="m-0">
+                                                        <form class="detach-room-form m-0" action="{{ route('admin.instruments.detachRoom', [$instrument->instrument_id, $room->room_id]) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger btn-sm d-flex align-items-center justify-content-center rounded-circle shadow-sm" style="height: 32px; width: 32px;">
@@ -290,9 +290,9 @@
         @endforeach
     </div>
 </div>
-@endsection
 
-{{-- JavaScript: เปิด modal ถ้ามี errors ของ bag instrumentRoom + เปิด tooltip --}}
+{{-- SweetAlert2 --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -313,5 +313,48 @@ document.addEventListener('DOMContentLoaded', function () {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
 
+    // SweetAlert สำหรับลบเครื่องดนตรี
+    document.querySelectorAll('.delete-instrument-form').forEach(form => {
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            Swal.fire({
+                title: 'ยืนยันการลบ',
+                text: 'คุณแน่ใจว่าต้องการลบเครื่องดนตรีนี้?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'ลบ',
+                cancelButtonText: 'ยกเลิก',
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d'
+            }).then((result) => {
+                if(result.isConfirmed){
+                    form.submit();
+                }
+            });
+        });
+    });
+
+    // SweetAlert สำหรับลบห้องที่เชื่อมเครื่องดนตรี
+    document.querySelectorAll('.detach-room-form').forEach(form => {
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            Swal.fire({
+                title: 'ยืนยันการลบห้อง',
+                text: 'แน่ใจว่าต้องการลบห้องนี้ออกจากเครื่องดนตรี?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'ลบ',
+                cancelButtonText: 'ยกเลิก',
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d'
+            }).then((result) => {
+                if(result.isConfirmed){
+                    form.submit();
+                }
+            });
+        });
+    });
+
 });
 </script>
+@endsection

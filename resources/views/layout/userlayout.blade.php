@@ -19,6 +19,30 @@
         main {
             flex: 1;
         }
+        .btn-cancel {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #000 !important; /* ตัวอักษรสีดำตลอด */
+        }
+
+        .btn-cancel:hover {
+            background: rgba(255,255,255,0.25); /* hover แค่เปลี่ยน background */
+            color: #000 !important; /* ย้ำให้สีดำ */
+        }
+        .btn-pay {
+            background: rgba(13, 110, 253, 0.85); /* ฟ้าโปร่ง ๆ */
+            backdrop-filter: blur(10px);
+            border: none;
+            color: #fff !important; /* ตัวหนังสือขาว */
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-pay:hover {
+            background: rgba(13, 110, 253, 1); /* hover = ฟ้าเข้มขึ้น */
+            color: #fff !important; /* ให้ขาวเหมือนเดิม */
+            transform: translateY(-2px); /* ยกนิดหน่อย */
+        }
     </style>
 </head>
 <body>
@@ -38,7 +62,7 @@
                         <a class="nav-link text-white" href="{{ route('user.home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#promotions">Promotions</a>
+                        <a class="nav-link text-white" href="{{ route('user.home') }}#promotions">Promotions</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{ route('user.bookings') }}">My Bookings</a>
@@ -102,5 +126,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    @yield('scripts')
 </body>
 </html>

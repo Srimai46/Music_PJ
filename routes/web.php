@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function() {
 
     // ----------------------------- Dashboard ----------------------------- //
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::post('/admin/bookings/{booking}/update-status', [BookingController::class, 'updateStatus'])->name('admin.bookings.updateStatus');
 
     // ----------------------------- User Management ----------------------------- //
     Route::get('/users', [UserManageController::class, 'userManagement'])->name('admin.userManagement');
@@ -86,6 +87,7 @@ Route::middleware(['auth'])->group(function() {
 
     // ----------------------------- Log ----------------------------- //
     Route::get('/log', [LogManageController::class, 'log'])->name('admin.log');
+    Route::post('/log', [LogManageController::class, 'clearAll'])->name('admin.logs.clear');
 
     
     // ------------------------------------------------------------------------ //

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2025 at 08:34 AM
+-- Generation Time: Sep 16, 2025 at 03:28 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,175 +36,6 @@ CREATE TABLE `activity_logs` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `activity_logs`
---
-
-INSERT INTO `activity_logs` (`log_id`, `user_id`, `role`, `action_type`, `details`, `created_at`) VALUES
-(1, 6, 'user', 'confirm_payment', 'Booking #00069 confirmed via QR Code', '2025-09-09 19:06:48'),
-(2, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #66 คืนเงิน 50%', '2025-09-09 19:18:50'),
-(3, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #68 คืนเงิน 50%', '2025-09-09 19:25:28'),
-(4, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #67 คืนเงิน 50%', '2025-09-09 19:25:30'),
-(5, 6, 'user', 'confirm_payment', 'Booking #00070 confirmed via QR Code', '2025-09-09 19:28:19'),
-(6, 6, 'user', 'confirm_payment', 'Booking #00071 confirmed via QR Code', '2025-09-09 19:31:45'),
-(7, 6, 'user', 'confirm_payment', 'Booking #00072 confirmed via QR Code', '2025-09-10 03:34:26'),
-(8, 6, 'user', 'confirm_payment', 'Booking #00073 confirmed via QR Code', '2025-09-10 04:26:11'),
-(9, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #70 คืนเงิน 50%', '2025-09-10 04:28:22'),
-(10, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #71 คืนเงิน 50%', '2025-09-10 04:28:23'),
-(11, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #72 คืนเงิน 50%', '2025-09-10 04:28:25'),
-(12, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #69 คืนเงิน 50%', '2025-09-10 04:28:27'),
-(13, 6, 'user', 'confirm_payment', 'Booking #00074 confirmed via QR Code', '2025-09-10 04:40:10'),
-(14, 6, 'user', 'confirm_payment', 'Booking #00075 confirmed via QR Code', '2025-09-10 04:43:04'),
-(15, 6, 'user', 'confirm_payment', 'Booking #00076 confirmed via QR Code', '2025-09-10 05:12:22'),
-(16, 6, 'user', 'confirm_payment', 'Booking #00077 confirmed via QR Code', '2025-09-10 05:14:53'),
-(17, 6, 'user', 'confirm_payment', 'Booking #00078 confirmed via QR Code', '2025-09-10 05:19:50'),
-(18, 6, 'user', 'confirm_payment', 'Booking #00079 confirmed via QR Code', '2025-09-10 05:21:04'),
-(19, 6, 'user', 'confirm_payment', 'Booking #00080 confirmed via QR Code', '2025-09-10 05:24:26'),
-(20, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #79 คืนเงิน 50%', '2025-09-10 05:32:46'),
-(21, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #78 คืนเงิน 50%', '2025-09-10 05:32:55'),
-(22, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #76 คืนเงิน 50%', '2025-09-10 05:32:59'),
-(23, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #73 คืนเงิน 50%', '2025-09-10 05:33:08'),
-(24, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #75 คืนเงิน 50%', '2025-09-10 05:33:10'),
-(25, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #74 คืนเงิน 50%', '2025-09-10 05:33:11'),
-(26, 6, 'user', 'delete_booking', 'ลบการจอง #73 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:43:00'),
-(27, 6, 'user', 'delete_booking', 'ลบการจอง #75 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:43:08'),
-(28, 6, 'user', 'delete_booking', 'ลบการจอง #72 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:43:10'),
-(29, 6, 'user', 'delete_booking', 'ลบการจอง #74 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:43:12'),
-(30, 6, 'user', 'delete_booking', 'ลบการจอง #76 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:43:28'),
-(31, 6, 'user', 'delete_booking', 'ลบการจอง #79 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:43:31'),
-(32, 6, 'user', 'delete_booking', 'ลบการจอง #78 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:43:33'),
-(33, 6, 'user', 'delete_booking', 'ลบการจอง #71 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:43:35'),
-(34, 6, 'user', 'delete_booking', 'ลบการจอง #70 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:43:36'),
-(35, 6, 'user', 'delete_booking', 'ลบการจอง #67 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:43:38'),
-(36, 6, 'user', 'delete_booking', 'ลบการจอง #68 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:43:39'),
-(37, 6, 'user', 'delete_booking', 'ลบการจอง #66 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:43:40'),
-(38, 6, 'user', 'delete_booking', 'ลบการจอง #69 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:43:42'),
-(39, 6, 'user', 'cancel_booking', 'ยกเลิกการจอง #77 คืนเงิน 50%', '2025-09-10 11:43:59'),
-(40, 6, 'user', 'delete_booking', 'ลบการจอง #77 และข้อมูลที่เกี่ยวข้องทั้งหมด', '2025-09-10 11:44:04'),
-(41, 6, 'user', 'confirm_payment', 'Booking #00081 confirmed via QR Code', '2025-09-10 17:28:27'),
-(42, 6, 'user', 'confirm_payment', 'Booking #00082 confirmed via QR Code', '2025-09-10 17:35:59'),
-(43, 6, 'user', 'update_profile', 'User updated profile information', '2025-09-10 17:40:33'),
-(44, 3, 'admin', 'update_profile', 'แก้ไขโปรไฟล์จาก [ชื่อ: test2Logg test2Logg, เบอร์: 0234445551] เป็น [ชื่อ: test2Logg test2Logg, เบอร์: 0234445551]', '2025-09-10 18:00:08'),
-(45, 3, 'admin', 'update_profile', 'แก้ไขโปรไฟล์จาก [ชื่อ: test2Logg test2Logg, เบอร์: 0234445551] เป็น [ชื่อ: test2Logg test2Logg, เบอร์: 0234445551]', '2025-09-10 18:04:17'),
-(46, 3, 'admin', 'update_profile', 'แก้ไขโปรไฟล์จาก [ชื่อ: test2Logg test2Logg, เบอร์: 0234445551] เป็น [ชื่อ: test2Logg test2Logg, เบอร์: 0234445551]', '2025-09-10 18:04:27'),
-(47, 3, 'admin', 'reset_password', 'รีเซ็ตรหัสผ่านผู้ใช้ [ID: 5, Username: Testing333] เป็นค่าเริ่มต้นใหม่', '2025-09-10 18:05:29'),
-(48, 3, 'admin', 'update_user', 'แก้ไขผู้ใช้ [ID: 5] จาก [ชื่อ: Testingg Testingg, Username: Testing333, Email: Testing333@gmail.com, เบอร์: 0123456789, Role: user] → [ชื่อ: Testingg Testingg, Username: Testing333444, Email: Testing333@gmail.com, เบอร์: 0123456789, Role: user]', '2025-09-10 18:06:11'),
-(49, 3, 'admin', 'reset_password', 'รีเซ็ตรหัสผ่านผู้ใช้ [ID: 5, Username: Testing333444] เป็นค่าเริ่มต้นใหม่', '2025-09-10 18:06:18'),
-(50, 3, 'admin', 'delete_room', 'ลบห้อง [ID: 13, ชื่อ: Luxury XL]', '2025-09-10 18:37:38'),
-(51, 3, 'admin', 'create_room', 'เพิ่มห้องใหม่', '2025-09-10 18:38:05'),
-(52, 3, 'admin', 'update_room', 'แก้ไขห้อง [ID: 14] จาก [ชื่อ: Luxury XXL, ราคา/ชม.: 3500.00, ความจุ: 10] → [ชื่อ: Luxury XXL, ราคา/ชม.: 3500.00, ความจุ: 10]', '2025-09-10 18:39:38'),
-(53, 3, 'admin', 'add_instrument_to_room', 'เพิ่มเครื่องดนตรี [Dodge] จำนวน 3 ในห้อง [ID: 14, ชื่อ: Luxury XXL]', '2025-09-10 18:40:29'),
-(54, 3, 'admin', 'add_instrument_to_room', 'เพิ่มเครื่องดนตรี [Johnson - KutchUpdate] จำนวน 3 ในห้อง [ID: 14, ชื่อ: Luxury XXL]', '2025-09-10 18:40:42'),
-(55, 3, 'admin', 'add_instrument_to_room', 'เพิ่มเครื่องดนตรี [Johnson - Kutchhh] จำนวน 3 ในห้อง [ID: 14, ชื่อ: Luxury XXL]', '2025-09-10 18:40:45'),
-(56, 3, 'admin', 'update_instrument_quantity', 'แก้ไขจำนวนเครื่องดนตรี [Johnson - KutchUpdate] ในห้อง [Luxury XXL] จาก 3 → 5', '2025-09-10 18:44:28'),
-(57, 3, 'admin', 'remove_instrument_from_room', 'ลบเครื่องดนตรี [Johnson - KutchUpdate] ออกจากห้อง [Luxury XXL]', '2025-09-10 18:44:44'),
-(58, 3, 'admin', 'add_instrument_to_room', 'เพิ่มเครื่องดนตรี [Johnson - KutchUpdate] จำนวน 5 ในห้อง [ID: 14, ชื่อ: Luxury XXL]', '2025-09-10 18:45:01'),
-(59, 3, 'admin', 'create_room', 'เพิ่มห้องใหม่', '2025-09-10 18:45:15'),
-(60, 3, 'admin', 'update_room', 'แก้ไขห้อง [ID: 15] จาก [ชื่อ: dawdw, ราคา/ชม.: 23.00, ความจุ: 23] → [ชื่อ: dawdw, ราคา/ชม.: 23.00, ความจุ: 23]', '2025-09-10 18:45:28'),
-(61, 3, 'admin', 'delete_room', 'ลบห้อง [ID: 15, ชื่อ: dawdw]', '2025-09-10 18:45:38'),
-(62, 3, 'admin', 'create_promotion', 'สร้างโปรโมชั่น [Test] (ประเภท: percent, ส่วนลด: 60)', '2025-09-10 18:52:59'),
-(63, 3, 'admin', 'update_promotion', 'แก้ไขโปรโมชั่น [Test] → [Testtttt], \n                        ส่วนลด: 60.00 → 60.00, \n                        สถานะ: Active → Inactive', '2025-09-10 18:53:34'),
-(64, 3, 'admin', 'toggle_promotion', 'สลับสถานะโปรโมชั่น [Testtttt] เป็น Active', '2025-09-10 18:53:46'),
-(65, 3, 'admin', 'toggle_promotion', 'สลับสถานะโปรโมชั่น [Testtttt] เป็น Inactive', '2025-09-10 18:53:48'),
-(66, 3, 'admin', 'toggle_promotion', 'สลับสถานะโปรโมชั่น [Testtttt] เป็น Active', '2025-09-10 18:53:50'),
-(67, 3, 'admin', 'delete_promotion', 'ลบโปรโมชั่น [Testtttt]', '2025-09-10 18:53:58'),
-(68, 3, 'admin', 'create_promotion', 'สร้างโปรโมชั่น [Ts] (ประเภท: percent, ส่วนลด: 12)', '2025-09-10 18:59:33'),
-(69, 3, 'admin', 'delete_promotion', 'ลบโปรโมชั่น [Ts]', '2025-09-10 18:59:44'),
-(70, 3, 'admin', 'create_instrument_category', 'เพิ่มประเภทเครื่องดนตรี [Wisozk Group]', '2025-09-10 19:09:17'),
-(71, 3, 'admin', 'create_instrument', 'เพิ่มเครื่องดนตรี [asdasdad] รหัส: 13124', '2025-09-10 19:09:43'),
-(72, 3, 'admin', 'create_instrument', 'เพิ่มเครื่องดนตรี [Holiday Discount] รหัส: 142535', '2025-09-10 19:10:05'),
-(73, 3, 'admin', 'create_instrument', 'เพิ่มเครื่องดนตรี [Wisozk Group] รหัส: 2222211', '2025-09-10 19:10:18'),
-(74, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [A13] ให้เครื่องดนตรี [Wisozk Group] จำนวน 1', '2025-09-10 19:11:05'),
-(75, 3, 'admin', 'update_instrument_room', 'อัปเดตจำนวนเครื่องดนตรี [Wisozk Group] ในห้อง [A13] จาก 1 → 5', '2025-09-10 19:11:29'),
-(76, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [Wisozk Group] → [Wisozk Grouppp]', '2025-09-10 19:14:12'),
-(77, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [Wisozk Grouppp] → [Wisozk Grouppp]', '2025-09-10 19:14:33'),
-(78, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [Holiday Discount] → [Holiday Discount]', '2025-09-10 19:15:14'),
-(79, 3, 'admin', 'delete_instrument', 'ลบเครื่องดนตรี [asdasdad] รหัส: 13124', '2025-09-10 19:15:31'),
-(80, 3, 'admin', 'delete_instrument_category', 'ลบประเภทเครื่องดนตรี [Wisozk Group] และเครื่องดนตรีทั้งหมดใน category นี้', '2025-09-10 19:15:42'),
-(81, 3, 'admin', 'create_instrument_category', 'เพิ่มประเภทเครื่องดนตรี [Wisozk Group]', '2025-09-10 19:16:14'),
-(82, 3, 'admin', 'create_instrument', 'เพิ่มเครื่องดนตรี [Holiday Discount] รหัส: 353534', '2025-09-11 05:11:06'),
-(83, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [Holiday Discount] → [Holiday Discount]', '2025-09-11 05:16:57'),
-(84, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [Holiday Discount] → [Holiday Discount]', '2025-09-11 05:17:11'),
-(85, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [Holiday Discount] → [Holiday Discount]', '2025-09-11 05:17:33'),
-(86, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [Holiday Discount] → [Holiday Discount]', '2025-09-11 05:17:38'),
-(87, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [Holiday Discount] → [Holiday Discount]', '2025-09-11 05:18:27'),
-(88, 3, 'admin', 'create_instrument', 'เพิ่มเครื่องดนตรี [131] รหัส: 131313', '2025-09-11 05:18:51'),
-(89, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [A13] ให้เครื่องดนตรี [Holiday Discount] จำนวน 1', '2025-09-11 05:19:09'),
-(90, 3, 'admin', 'delete_instrument', 'ลบเครื่องดนตรี [131] รหัส: 131313', '2025-09-11 05:19:22'),
-(91, 3, 'admin', 'delete_instrument_category', 'ลบประเภทเครื่องดนตรี [Wisozk Group] และเครื่องดนตรีทั้งหมดใน category นี้', '2025-09-11 05:19:57'),
-(92, 3, 'admin', 'create_instrument', 'เพิ่มเครื่องดนตรี [113131] รหัส: 1414s', '2025-09-11 05:26:29'),
-(93, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [113131] → [113131]', '2025-09-11 05:26:43'),
-(94, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [113131] → [113131]', '2025-09-11 05:26:49'),
-(95, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [113131] → [113131]', '2025-09-11 05:26:54'),
-(96, 3, 'admin', 'create_instrument', 'เพิ่มเครื่องดนตรี [sadssd] รหัส: 11313', '2025-09-11 05:28:30'),
-(97, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [113131] → [113131ss]', '2025-09-11 05:28:40'),
-(98, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [113131ss] → [113131ss]', '2025-09-11 05:28:55'),
-(99, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [Luxury XXL] ให้เครื่องดนตรี [113131ss] จำนวน 555', '2025-09-11 05:29:06'),
-(100, 3, 'admin', 'update_instrument_room', 'อัปเดตจำนวนเครื่องดนตรี [113131ss] ในห้อง [Luxury XXL] จาก 555 → 558', '2025-09-11 05:29:11'),
-(101, 3, 'admin', 'update_instrument_room', 'อัปเดตจำนวนเครื่องดนตรี [113131ss] ในห้อง [Luxury XXL] จาก 558 → 562', '2025-09-11 05:29:14'),
-(102, 3, 'admin', 'detach_room_from_instrument', 'ลบห้อง [Luxury XXL] ออกจากเครื่องดนตรี [113131ss]', '2025-09-11 05:29:26'),
-(103, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [A13] ให้เครื่องดนตรี [113131ss] จำนวน 1', '2025-09-11 05:29:37'),
-(104, 3, 'admin', 'update_instrument_room', 'อัปเดตจำนวนเครื่องดนตรี [113131ss] ในห้อง [A13] จาก 1 → 10', '2025-09-11 05:29:53'),
-(105, 3, 'admin', 'delete_instrument', 'ลบเครื่องดนตรี [113131ss] รหัส: 1414s', '2025-09-11 05:30:09'),
-(106, 3, 'admin', 'delete_instrument', 'ลบเครื่องดนตรี [sadssd] รหัส: 11313', '2025-09-11 05:30:27'),
-(107, 3, 'admin', 'create_instrument_category', 'เพิ่มประเภทเครื่องดนตรี [กลอง]', '2025-09-11 05:33:35'),
-(108, 3, 'admin', 'create_instrument_category', 'เพิ่มประเภทเครื่องดนตรี [Holiday Discount]', '2025-09-11 05:34:07'),
-(109, 3, 'admin', 'delete_instrument_category', 'ลบประเภทเครื่องดนตรี [Holiday Discount] และเครื่องดนตรีทั้งหมดใน category นี้', '2025-09-11 05:38:55'),
-(110, 3, 'admin', 'create_instrument_category', 'เพิ่มประเภทเครื่องดนตรี [Holiday Discount]', '2025-09-11 05:39:43'),
-(111, 3, 'admin', 'create_instrument_category', 'เพิ่มประเภทเครื่องดนตรี [A11]', '2025-09-11 05:41:37'),
-(112, 3, 'admin', 'delete_instrument_category', 'ลบประเภทเครื่องดนตรี [Holiday Discount] และเครื่องดนตรีทั้งหมดใน category นี้', '2025-09-11 05:41:43'),
-(113, 3, 'admin', 'delete_instrument_category', 'ลบประเภทเครื่องดนตรี [A11] และเครื่องดนตรีทั้งหมดใน category นี้', '2025-09-11 05:41:43'),
-(114, 3, 'admin', 'create_instrument_category', 'เพิ่มประเภทเครื่องดนตรี [Holiday Discount]', '2025-09-11 05:45:29'),
-(115, 3, 'admin', 'create_instrument_category', 'เพิ่มประเภทเครื่องดนตรี [AdminTest3]', '2025-09-11 05:45:34'),
-(116, 3, 'admin', 'delete_instrument_category', 'ลบประเภทเครื่องดนตรี [Holiday Discount] และเครื่องดนตรีทั้งหมดใน category นี้', '2025-09-11 05:45:44'),
-(117, 3, 'admin', 'delete_instrument_category', 'ลบประเภทเครื่องดนตรี [AdminTest3] และเครื่องดนตรีทั้งหมดใน category นี้', '2025-09-11 05:45:44'),
-(118, 3, 'admin', 'create_instrument_category', 'เพิ่มประเภทเครื่องดนตรี [Holiday Discount]', '2025-09-11 05:45:56'),
-(119, 3, 'admin', 'create_instrument', 'เพิ่มเครื่องดนตรี [100% Discount] รหัส: 43434', '2025-09-11 05:46:17'),
-(120, 3, 'admin', 'create_instrument', 'เพิ่มเครื่องดนตรี [Wisozk Group] รหัส: 141414243', '2025-09-11 05:46:29'),
-(121, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [100% Discount] → [100% Discount]', '2025-09-11 05:46:42'),
-(122, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [100% Discount] → [100% Discount]', '2025-09-11 05:46:53'),
-(123, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [Luxury XXL] ให้เครื่องดนตรี [100% Discount] จำนวน 1', '2025-09-11 05:47:02'),
-(124, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [Studio A - Premium] ให้เครื่องดนตรี [100% Discount] จำนวน 1', '2025-09-11 05:47:06'),
-(125, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [A12] ให้เครื่องดนตรี [100% Discount] จำนวน 1', '2025-09-11 05:47:09'),
-(126, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [A13] ให้เครื่องดนตรี [100% Discount] จำนวน 1', '2025-09-11 05:47:13'),
-(127, 3, 'admin', 'update_instrument', 'แก้ไขเครื่องดนตรี [100% Discount] → [100% Discount]', '2025-09-11 05:47:20'),
-(128, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [A13] ให้เครื่องดนตรี [Wisozk Group] จำนวน 1', '2025-09-11 05:47:46'),
-(129, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [A12] ให้เครื่องดนตรี [Wisozk Group] จำนวน 1', '2025-09-11 05:47:50'),
-(130, 3, 'admin', 'update_instrument_room', 'อัปเดตจำนวนเครื่องดนตรี [Wisozk Group] ในห้อง [A12] จาก 1 → 8', '2025-09-11 05:48:01'),
-(131, 3, 'admin', 'update_instrument_room', 'อัปเดตจำนวนเครื่องดนตรี [Wisozk Group] ในห้อง [A13] จาก 1 → 8', '2025-09-11 05:48:05'),
-(132, 3, 'admin', 'create_instrument', 'เพิ่มเครื่องดนตรี [Holiday Discount] รหัส: 25267', '2025-09-11 05:48:35'),
-(133, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [A13] ให้เครื่องดนตรี [Holiday Discount] จำนวน 1', '2025-09-11 05:48:47'),
-(134, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [A12] ให้เครื่องดนตรี [Holiday Discount] จำนวน 1', '2025-09-11 05:48:50'),
-(135, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [Studio A - Premium] ให้เครื่องดนตรี [Holiday Discount] จำนวน 1', '2025-09-11 05:48:53'),
-(136, 3, 'admin', 'add_room_to_instrument', 'เพิ่มห้อง [Luxury XXL] ให้เครื่องดนตรี [Holiday Discount] จำนวน 1', '2025-09-11 05:48:56'),
-(137, 3, 'admin', 'delete_instrument_category', 'ลบประเภทเครื่องดนตรี [กลอง] และเครื่องดนตรีทั้งหมดใน category นี้', '2025-09-11 05:49:44'),
-(138, 3, 'admin', 'create_promotion', 'สร้างโปรโมชั่น [YippyVoucher] (ประเภท: percent, ส่วนลด: 20)', '2025-09-11 06:04:55'),
-(139, 3, 'admin', 'update_promotion', 'แก้ไขโปรโมชั่น [YippyVoucher] → [YippyVoucherrr], \n                        ส่วนลด: 20.00 → 30.00, \n                        สถานะ: Active → Inactive', '2025-09-11 06:05:24'),
-(140, 3, 'admin', 'toggle_promotion', 'สลับสถานะโปรโมชั่น [YippyVoucherrr] เป็น Active', '2025-09-11 06:05:27'),
-(141, 3, 'admin', 'toggle_promotion', 'สลับสถานะโปรโมชั่น [YippyVoucherrr] เป็น Inactive', '2025-09-11 06:05:34'),
-(142, 3, 'admin', 'toggle_promotion', 'สลับสถานะโปรโมชั่น [YippyVoucherrr] เป็น Active', '2025-09-11 06:05:36'),
-(143, 3, 'admin', 'update_promotion', 'แก้ไขโปรโมชั่น [YippyVoucherrr] → [YippyVoucherrr], \n                        ส่วนลด: 30.00 → 40.00, \n                        สถานะ: Active → Active', '2025-09-11 06:05:43'),
-(144, 3, 'admin', 'delete_promotion', 'ลบโปรโมชั่น [100% Discount]', '2025-09-11 06:05:58'),
-(145, 3, 'admin', 'create_room', 'เพิ่มห้องใหม่', '2025-09-11 06:18:26'),
-(146, 3, 'admin', 'create_room', 'เพิ่มห้องใหม่', '2025-09-11 06:22:58'),
-(147, 3, 'admin', 'update_room', 'แก้ไขห้อง [ID: 17] จาก [ชื่อ: TestDelete, ราคา/ชม.: 4555.00, ความจุ: 14] → [ชื่อ: TestDelete, ราคา/ชม.: 4555.00, ความจุ: 14]', '2025-09-11 06:23:10'),
-(148, 3, 'admin', 'update_room', 'แก้ไขห้อง [ID: 17] จาก [ชื่อ: TestDelete, ราคา/ชม.: 4555.00, ความจุ: 14] → [ชื่อ: TestDeleteee, ราคา/ชม.: 455555.00, ความจุ: 144]', '2025-09-11 06:23:38'),
-(149, 3, 'admin', 'add_instrument_to_room', 'เพิ่มเครื่องดนตรี [Dodge] จำนวน 1 ในห้อง [ID: 17, ชื่อ: TestDeleteee]', '2025-09-11 06:23:51'),
-(150, 3, 'admin', 'add_instrument_to_room', 'เพิ่มเครื่องดนตรี [Johnson - KutchUpdate] จำนวน 1 ในห้อง [ID: 17, ชื่อ: TestDeleteee]', '2025-09-11 06:23:54'),
-(151, 3, 'admin', 'add_instrument_to_room', 'เพิ่มเครื่องดนตรี [Johnson - Kutchhh] จำนวน 1 ในห้อง [ID: 17, ชื่อ: TestDeleteee]', '2025-09-11 06:23:56'),
-(152, 3, 'admin', 'add_instrument_to_room', 'เพิ่มเครื่องดนตรี [100% Discount] จำนวน 1 ในห้อง [ID: 17, ชื่อ: TestDeleteee]', '2025-09-11 06:23:59'),
-(153, 3, 'admin', 'add_instrument_to_room', 'เพิ่มเครื่องดนตรี [Wisozk Group] จำนวน 1 ในห้อง [ID: 17, ชื่อ: TestDeleteee]', '2025-09-11 06:24:02'),
-(154, 3, 'admin', 'update_instrument_quantity', 'แก้ไขจำนวนเครื่องดนตรี [Dodge] ในห้อง [TestDeleteee] จาก 1 → 4', '2025-09-11 06:24:23'),
-(155, 3, 'admin', 'update_instrument_quantity', 'แก้ไขจำนวนเครื่องดนตรี [Johnson - KutchUpdate] ในห้อง [TestDeleteee] จาก 1 → 4', '2025-09-11 06:24:26'),
-(156, 3, 'admin', 'update_instrument_quantity', 'แก้ไขจำนวนเครื่องดนตรี [Johnson - Kutchhh] ในห้อง [TestDeleteee] จาก 1 → 4', '2025-09-11 06:24:27'),
-(157, 3, 'admin', 'update_instrument_quantity', 'แก้ไขจำนวนเครื่องดนตรี [100% Discount] ในห้อง [TestDeleteee] จาก 1 → 4', '2025-09-11 06:24:30'),
-(158, 3, 'admin', 'update_instrument_quantity', 'แก้ไขจำนวนเครื่องดนตรี [Wisozk Group] ในห้อง [TestDeleteee] จาก 1 → 4', '2025-09-11 06:24:31'),
-(159, 3, 'admin', 'remove_instrument_from_room', 'ลบเครื่องดนตรี [Johnson - KutchUpdate] ออกจากห้อง [TestDeleteee]', '2025-09-11 06:24:40'),
-(160, 3, 'admin', 'delete_room', 'ลบห้อง [ID: 17, ชื่อ: TestDeleteee]', '2025-09-11 06:24:50'),
-(161, 3, 'admin', 'update_user', 'แก้ไขผู้ใช้ [ID: 4] จาก [ชื่อ: Testing Testing, Username: Testing123, Email: Testing123@gmail.com, เบอร์: 0222222222, Role: user] → [ชื่อ: Testingnew Testingnew, Username: Testing123new, Email: Testing123@gmail.com, เบอร์: 0111111111, Role: user]', '2025-09-11 06:30:51'),
-(162, 3, 'admin', 'reset_password', 'รีเซ็ตรหัสผ่านผู้ใช้ [ID: 4, Username: Testing123new] เป็นค่าเริ่มต้นใหม่', '2025-09-11 06:31:23'),
-(163, 3, 'admin', 'reset_password', 'รีเซ็ตรหัสผ่านผู้ใช้ [ID: 4, Username: Testing123new] เป็นค่าเริ่มต้นใหม่', '2025-09-11 06:31:35');
-
 -- --------------------------------------------------------
 
 --
@@ -220,7 +51,7 @@ CREATE TABLE `bookings` (
   `end_time` datetime NOT NULL,
   `total_price` decimal(10,2) NOT NULL,
   `deposit_price` decimal(10,2) NOT NULL,
-  `status` enum('pending','confirmed','cancelled') DEFAULT 'pending',
+  `status` enum('pending','confirmed','cancelled','complete') DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -230,9 +61,17 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`booking_id`, `user_id`, `room_id`, `promo_id`, `start_time`, `end_time`, `total_price`, `deposit_price`, `status`, `created_at`, `updated_at`) VALUES
-(80, 6, 12, NULL, '2025-09-10 12:12:00', '2025-09-10 13:12:00', 7378.00, 3689.00, 'confirmed', '2025-09-10 05:24:26', '2025-09-10 05:24:26'),
-(81, 6, 12, NULL, '2025-09-11 00:27:00', '2025-09-11 01:27:00', 1800.50, 900.25, 'confirmed', '2025-09-10 17:28:27', '2025-09-10 17:28:27'),
-(82, 6, 12, NULL, '2025-09-11 03:35:00', '2025-09-11 04:35:00', 2801.00, 1400.50, 'confirmed', '2025-09-10 17:35:59', '2025-09-10 17:36:44');
+(80, 6, 12, NULL, '2025-09-10 12:12:00', '2025-09-10 13:12:00', 7378.00, 3689.00, 'cancelled', '2025-09-10 05:24:26', '2025-09-16 08:36:23'),
+(81, 6, 12, NULL, '2025-09-11 00:27:00', '2025-09-11 01:27:00', 1800.50, 900.25, 'cancelled', '2025-09-10 17:28:27', '2025-09-16 08:36:20'),
+(82, 6, 12, NULL, '2025-09-11 03:35:00', '2025-09-11 04:35:00', 2801.00, 1400.50, 'cancelled', '2025-09-10 17:35:59', '2025-09-16 08:36:12'),
+(83, 6, 12, NULL, '2025-09-16 01:37:00', '2025-09-16 02:37:00', 3908.50, 1954.25, 'cancelled', '2025-09-15 18:38:14', '2025-09-16 13:08:14'),
+(84, 6, 16, NULL, '2025-09-16 01:44:00', '2025-09-16 04:44:00', 6652.25, 3326.13, 'pending', '2025-09-15 18:44:45', '2025-09-16 09:53:06'),
+(85, 6, 14, NULL, '2025-09-16 14:46:00', '2025-09-16 15:46:00', 532.35, 266.18, 'confirmed', '2025-09-16 07:47:37', '2025-09-16 09:53:04'),
+(89, 6, 16, NULL, '2025-09-16 15:55:00', '2025-09-16 18:55:00', 2666.25, 1333.13, 'complete', '2025-09-16 08:55:45', '2025-09-16 09:52:50'),
+(90, 6, 11, NULL, '2025-09-16 15:56:00', '2025-09-16 17:56:00', 4596.00, 2298.00, 'complete', '2025-09-16 08:56:16', '2025-09-16 09:51:08'),
+(91, 6, 9, NULL, '2025-09-16 20:53:00', '2025-09-16 21:53:00', 3330.00, 1665.00, 'confirmed', '2025-09-16 09:54:20', '2025-09-16 12:06:09'),
+(92, 6, 12, NULL, '2025-09-16 16:56:00', '2025-09-16 21:56:00', 10238.50, 5119.25, 'confirmed', '2025-09-16 09:56:24', '2025-09-16 12:06:12'),
+(93, 6, 12, NULL, '2025-09-16 18:27:00', '2025-09-16 19:27:00', 0.50, 0.25, 'pending', '2025-09-16 11:30:33', '2025-09-16 11:30:33');
 
 -- --------------------------------------------------------
 
@@ -256,7 +95,27 @@ INSERT INTO `booking_addons` (`booking_id`, `instrument_id`, `quantity`, `price`
 (80, 7, 7, 300.00),
 (81, 7, 6, 300.00),
 (82, 2, 7, 100.00),
-(82, 7, 7, 300.00);
+(82, 7, 7, 300.00),
+(83, 2, 2, 100.00),
+(83, 7, 3, 300.00),
+(83, 17, 1, 144.00),
+(83, 18, 4, 666.00),
+(84, 2, 8, 100.00),
+(84, 7, 6, 300.00),
+(84, 17, 5, 144.00),
+(84, 18, 5, 666.00),
+(85, 2, 1, 100.00),
+(85, 17, 3, 144.00),
+(89, 18, 4, 666.00),
+(90, 2, 3, 100.00),
+(90, 7, 4, 300.00),
+(90, 17, 3, 144.00),
+(90, 18, 4, 666.00),
+(91, 18, 5, 666.00),
+(92, 2, 6, 100.00),
+(92, 7, 11, 300.00),
+(92, 17, 7, 144.00),
+(92, 18, 8, 666.00);
 
 -- --------------------------------------------------------
 
@@ -359,7 +218,15 @@ CREATE TABLE `payments` (
 INSERT INTO `payments` (`payment_id`, `booking_id`, `amount`, `payment_method`, `payment_status`, `transaction_id`, `paid_at`, `created_at`) VALUES
 (13, 80, 3689.00, 'qr_code', 'paid', 'TXN1757481866', '2025-09-10 12:24:26', '2025-09-10 05:24:26'),
 (14, 81, 900.25, 'qr_code', 'paid', 'TXN1757525307', '2025-09-11 00:28:27', '2025-09-10 17:28:27'),
-(15, 82, 1400.50, 'qr_code', 'paid', 'TXN1757525759', '2025-09-11 00:35:59', '2025-09-10 17:35:59');
+(15, 82, 1400.50, 'qr_code', 'paid', 'TXN1757525759', '2025-09-11 00:35:59', '2025-09-10 17:35:59'),
+(16, 83, 1954.25, 'qr_code', 'paid', 'TXN1757961494', '2025-09-16 01:38:14', '2025-09-15 18:38:14'),
+(17, 84, 3326.13, 'qr_code', 'paid', 'TXN1757961885', '2025-09-16 01:44:45', '2025-09-15 18:44:45'),
+(18, 85, 266.18, 'qr_code', 'paid', 'TXN1758008857', '2025-09-16 14:47:37', '2025-09-16 07:47:37'),
+(22, 89, 1333.13, 'qr_code', 'paid', 'TXN1758012945', '2025-09-16 15:55:45', '2025-09-16 08:55:45'),
+(23, 90, 2298.00, 'qr_code', 'paid', 'TXN1758012976', '2025-09-16 15:56:16', '2025-09-16 08:56:16'),
+(24, 91, 1665.00, 'qr_code', 'paid', 'TXN1758016460', '2025-09-16 16:54:20', '2025-09-16 09:54:20'),
+(25, 92, 5119.25, 'qr_code', 'paid', 'TXN1758016584', '2025-09-16 16:56:24', '2025-09-16 09:56:24'),
+(26, 93, 0.25, 'qr_code', 'paid', 'TXN1758022233', '2025-09-16 18:30:33', '2025-09-16 11:30:33');
 
 -- --------------------------------------------------------
 
@@ -383,10 +250,10 @@ CREATE TABLE `promotions` (
 --
 
 INSERT INTO `promotions` (`promo_id`, `name`, `description`, `discount_type`, `discount_value`, `start_date`, `end_date`, `is_active`) VALUES
-(1, 'Holiday Discount', 'You can save up to 50 pounds per person !!!', 'fixed', 50.00, '2025-09-02', '2025-09-04', 0),
-(3, 'Holiday Discount Scoopy', 'test', 'percent', 99.99, '2025-09-10', '2025-09-17', 1),
+(3, 'Holiday Discount Scoopy', 'test', 'percent', 99.99, '2025-09-10', '2025-09-17', 0),
 (4, 'test222', 'test222', 'fixed', 222.00, '2025-09-02', '2025-09-18', 0),
-(8, 'YippyVoucherrr', 'Ehereeee', 'percent', 40.00, '2025-09-11', '2025-09-14', 1);
+(8, 'YippyVoucherrr', 'Ehereeee', 'percent', 40.00, '2025-09-11', '2025-09-14', 0),
+(9, 'Discount 10% off\'s', 'Discount rooms price for this events, for sure', 'percent', 10.00, '2025-09-16', '2025-09-23', 1);
 
 -- --------------------------------------------------------
 
@@ -411,7 +278,15 @@ CREATE TABLE `receipts` (
 INSERT INTO `receipts` (`receipt_id`, `booking_id`, `receipt_number`, `full_amount`, `deposit_amount`, `discount_amount`, `created_at`) VALUES
 (13, 80, '00080', 7378.00, 3689.00, 0.00, '2025-09-10 05:24:26'),
 (14, 81, '00081', 1800.50, 900.25, 0.00, '2025-09-10 17:28:27'),
-(15, 82, '00082', 2801.00, 1400.50, 0.00, '2025-09-10 17:35:59');
+(15, 82, '00082', 2801.00, 1400.50, 0.00, '2025-09-10 17:35:59'),
+(16, 83, '00083', 3908.50, 1954.25, 0.00, '2025-09-15 18:38:14'),
+(17, 84, '00084', 6652.25, 3326.13, 0.00, '2025-09-15 18:44:45'),
+(18, 85, '00085', 532.35, 266.18, 0.00, '2025-09-16 07:47:37'),
+(22, 89, '00089', 2666.25, 1333.13, 0.00, '2025-09-16 08:55:45'),
+(23, 90, '00090', 4596.00, 2298.00, 0.00, '2025-09-16 08:56:16'),
+(24, 91, '00091', 3330.00, 1665.00, 0.00, '2025-09-16 09:54:20'),
+(25, 92, '00092', 10238.50, 5119.25, 0.00, '2025-09-16 09:56:24'),
+(26, 93, '00093', 0.50, 0.25, 0.00, '2025-09-16 11:30:33');
 
 -- --------------------------------------------------------
 
@@ -438,7 +313,8 @@ INSERT INTO `rooms` (`room_id`, `name`, `price_per_hour`, `capacity`, `descripti
 (11, 'A12', 12.00, 12121, 'ห้องซ้อมขนาดกลาง เก็บเสียงอย่างดี พร้อมเครื่องดนตรีครบวงจร (กลองชุด, กีตาร์, เบส, คีย์บอร์ด)', 'rooms/vIJc6z9i18dt2RaCXrKvpZ9SqTSX8h1Ymc6RbW5L.jpg', '2025-09-05 16:50:34'),
 (12, 'Studio A - Premium', 5000.00, 6, 'ห้องซ้อมขนาดกลาง เก็บเสียงอย่างดี พร้อมเครื่องดนตรีครบวงจร (กลองชุด, กีตาร์, เบส, คีย์บอร์ด)', 'rooms/8hC814xXQG6KUfeoC58hCyoh8S9zx0tERPkV9Zgk.jpg', '2025-09-08 18:18:09'),
 (14, 'Luxury XXL', 3500.00, 10, 'ห้องซ้อมขนาดกลาง เก็บเสียงอย่างดี พร้อมเครื่องดนตรีครบวงจร (กลองชุด, กีตาร์, เบส, คีย์บอร์ด)', 'rooms/UWxG0x75nG0h0O1nUp8SjTSOXm7QpmXGa9umufJH.png', '2025-09-10 18:38:05'),
-(16, 'GoldPremium', 7500.00, 12, 'ห้องซ้อมขนาดกลาง เก็บเสียงอย่างดี พร้อมเครื่องดนตรีครบวงจร (กลองชุด, กีตาร์, เบส, คีย์บอร์ด)', 'rooms/SEleDmCd0VPgs5T0DFSpJZwSvDPxDkwJqrSTUmMR.jpg', '2025-09-11 06:18:26');
+(16, 'GoldPremium', 7500.00, 12, 'ห้องซ้อมขนาดกลาง เก็บเสียงอย่างดี พร้อมเครื่องดนตรีครบวงจร (กลองชุด, กีตาร์, เบส, คีย์บอร์ด)', 'rooms/SEleDmCd0VPgs5T0DFSpJZwSvDPxDkwJqrSTUmMR.jpg', '2025-09-11 06:18:26'),
+(18, 'Room Pillar Premium XL', 15000.00, 300, 'ห้องซ้อมขนาดกลาง เก็บเสียงอย่างดี พร้อมเครื่องดนตรีครบวงจร (กลองชุด, กีตาร์, เบส, คีย์บอร์ด)', 'rooms/fBCoNyzm32gXEHPQTCXQpAfpSgeXV31kl6YsX4hi.png', '2025-09-16 13:09:16');
 
 -- --------------------------------------------------------
 
@@ -468,7 +344,10 @@ INSERT INTO `room_instruments` (`room_id`, `instrument_id`, `quantity`) VALUES
 (14, 2, 3),
 (14, 4, 5),
 (14, 7, 3),
-(14, 17, 1);
+(14, 17, 1),
+(18, 7, 3),
+(18, 17, 5),
+(18, 18, 6);
 
 -- --------------------------------------------------------
 
@@ -499,7 +378,8 @@ INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `username`, `email`, `p
 (3, 'test2Logg', 'test2Logg', 'test2', 'test2@gmail.com', '$2y$12$u0Tc4T6MzHLfLJamNqcepu84ex2PImFPr/vzxujZ9t9yqIwD/kMoK', '0234445551', 'admin', '2025-08-28 09:23:38', '2025-09-10 17:58:33'),
 (4, 'Testingnew', 'Testingnew', 'Testing123new', 'Testing123@gmail.com', '$2y$12$LLP1NEDU3aScsyyiTiQEo.nkhxvXTY5ZqULn9upgdtkTdQSLaOp5e', '0111111111', 'user', '2025-09-05 16:58:24', '2025-09-11 06:31:35'),
 (5, 'Testingg', 'Testingg', 'Testing333444', 'Testing333@gmail.com', '$2y$12$dUd9BlUtBaJYiV9Yog2VAuVPJs209CxHz.w4NmerNM/jA4ZjukK86', '0123456789', 'user', '2025-09-05 16:59:11', '2025-09-10 18:06:18'),
-(6, 'News', 'Looks', 'Newlookauth3', 'Newlookauth3@gmail.com', '$2y$12$UUwnROXyy9ydejCsTnc7pecOf6nzDsCD16/lrT3LfLOBmvYTkayQ6', '0812345678', 'user', '2025-09-09 06:35:11', '2025-09-10 17:40:33');
+(6, 'News', 'Looks', 'Newlookauth3', 'Newlookauth3@gmail.com', '$2y$12$UUwnROXyy9ydejCsTnc7pecOf6nzDsCD16/lrT3LfLOBmvYTkayQ6', '0812345678', 'user', '2025-09-09 06:35:11', '2025-09-10 17:40:33'),
+(7, 'Tester1', 'Tester1', 'TesterLast', 'Tester@gmail.com', '$2y$12$xU4VdVkGBCEn04/f24ndcu2lVVWoNmf5wQIsAds/N4/dgIgo3rr7a', '033333333', 'admin', '2025-09-16 12:45:30', '2025-09-16 13:19:55');
 
 --
 -- Indexes for dumped tables
@@ -599,25 +479,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activity_logs`
 --
 ALTER TABLE `activity_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `instruments`
 --
 ALTER TABLE `instruments`
-  MODIFY `instrument_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `instrument_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `instrument_categories`
 --
 ALTER TABLE `instrument_categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `password_resets`
@@ -629,31 +509,31 @@ ALTER TABLE `password_resets`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `promotions`
 --
 ALTER TABLE `promotions`
-  MODIFY `promo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `promo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

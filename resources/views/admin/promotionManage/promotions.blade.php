@@ -59,8 +59,7 @@
                             </a>
 
                             {{-- Delete --}}
-                            <form action="{{ route('admin.promotions.delete', $promotion->promo_id) }}" method="POST" 
-                                  onsubmit="return confirm('คุณแน่ใจว่าจะลบโปรโมชั่นนี้?');">
+                            <form class="delete-promo-form" action="{{ route('admin.promotions.delete', $promotion->promo_id) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-danger d-flex align-items-center justify-content-center" 
                                         style="width:35px; height:35px;" data-bs-toggle="tooltip" title="ลบ">
@@ -87,7 +86,6 @@
 
 @push('styles')
 <style>
-/* Glassmorphism effect */
 .glass-table {
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
@@ -117,12 +115,48 @@
 @endpush
 
 @push('scripts')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+
+    // Tooltip
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
+
+    // SweetAlert สำหรับลบโปรโมชั่น
+    document.querySelectorAll('.delete-promo-form').forEach(form => {
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            Swal.fire({
+                title: 'ยืนยันการลบ',
+                text: 'คุณแน่ใจว่าจะลบโปรโมชั่นนี้?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'ลบ',
+                cancelButtonText: 'ยกเลิก',
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d'
+            }).then((result) => {
+                if(result.isConfirmed){
+                    form.submit();
+                }
+            });
+        });
+    });
+
+    // SweetAlert success หลังลบหรือเพิ่มสำเร็จ (ถ้ามี session)
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'สำเร็จ!',
+            text: "{{ session('success') }}",
+            timer: 2000,
+            showConfirmButton: false
+        });
+    @endif
+
 });
 </script>
 @endpush

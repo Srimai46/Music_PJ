@@ -71,6 +71,6 @@ class UserManageController extends Controller
         ]);
 
         return redirect()->route('admin.userManagement')
-                         ->with('success', 'รีเซ็ตรหัสผ่านเป็น "12345678" แล้ว');
+                         ->with('success', 'รีเซ็ตรหัสผ่านเป็น 12345678 แล้ว');
     }
 }

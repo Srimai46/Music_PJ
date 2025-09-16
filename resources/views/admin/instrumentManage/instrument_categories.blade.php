@@ -97,31 +97,59 @@
 @endpush
 
 @push('scripts')
+{{-- SweetAlert2 --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 document.getElementById('deleteSelected').addEventListener('click', () => {
     const selectedCheckboxes = document.querySelectorAll('.category-checkbox:checked');
     if(selectedCheckboxes.length === 0){
-        alert('โปรดเลือกอย่างน้อย 1 ประเภทที่ต้องการลบ');
+        Swal.fire({
+            icon: 'warning',
+            title: 'แจ้งเตือน',
+            text: 'โปรดเลือกอย่างน้อย 1 ประเภทที่ต้องการลบ',
+            confirmButtonColor: '#0d6efd'
+        });
         return;
     }
 
-    if(!confirm('คุณแน่ใจว่าต้องการลบประเภทที่เลือก?')) return;
+    Swal.fire({
+        title: 'ยืนยันการลบ',
+        text: 'คุณแน่ใจว่าต้องการลบประเภทที่เลือก?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'ลบ',
+        cancelButtonText: 'ยกเลิก',
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d'
+    }).then((result) => {
+        if(result.isConfirmed){
+            const ids = Array.from(selectedCheckboxes).map(cb => cb.value);
 
-    const ids = Array.from(selectedCheckboxes).map(cb => cb.value);
-
-    fetch("{{ route('admin.instrumentCategories.deleteSelected') }}", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        },
-        body: JSON.stringify({ ids })
-    }).then(res => res.json())
-    .then(data => {
-        if(data.success){
-            location.reload();
-        } else {
-            alert('เกิดข้อผิดพลาด กรุณาลองใหม่');
+            fetch("{{ route('admin.instrumentCategories.deleteSelected') }}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ ids })
+            }).then(res => res.json())
+            .then(data => {
+                if(data.success){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'ลบสำเร็จ',
+                        text: 'ประเภทที่เลือกถูกลบเรียบร้อยแล้ว',
+                        timer: 1500,
+                        showConfirmButton: false
+                    }).then(() => location.reload());
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'เกิดข้อผิดพลาด',
+                        text: 'กรุณาลองใหม่'
+                    });
+                }
+            });
         }
     });
 });

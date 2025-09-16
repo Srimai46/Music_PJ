@@ -3,53 +3,85 @@
 @section('title', 'Activity Logs')
 
 @section('content')
-<div class="container py-5">
+    <div class="container py-5">
 
-    <h3 class="mb-4 fw-bold text-black">Activity Logs</h3>
+        <h3 class="mb-4 fw-bold text-black">Activity Logs</h3>
 
-    <div class="card border-0 shadow-lg rounded-4 p-3"
-         style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px);">
-        <div class="table-responsive">
-            <table class="table table-hover align-middle text-center mb-0 text-white">
-                <thead class="text-white-50">
-                    <tr>
-                        <th><i class="bi bi-hash"></i> Log ID</th>
-                        <th><i class="bi bi-person-badge"></i> User</th>
-                        <th><i class="bi bi-person-gear"></i> Role</th>
-                        <th><i class="bi bi-gear"></i> Action</th>
-                        <th><i class="bi bi-card-text"></i> Details</th>
-                        <th><i class="bi bi-clock-history"></i> Timestamp</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse($logs as $log)
+        <div class="card border-0 shadow-lg rounded-4 p-3"
+            style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px);">
+            <div class="table-responsive">
+                {{-- ปุ่ม Clear All Logs --}}
+                <button id="clearLogsBtn" class="btn btn-danger btn-sm mb-3 float-end">
+                    <i class="bi bi-trash"></i> Clear All Logs
+                </button>
+
+                {{-- Form ลบทั้งหมด แต่ซ่อน --}}
+                <form id="clearLogsForm" action="{{ route('admin.logs.clear') }}" method="POST" style="display:none;">
+                    @csrf
+                </form>
+
+                <table class="table table-hover align-middle text-center mb-0 text-white">
+                    <thead class="text-white-50">
                         <tr>
-                            <td>{{ $log->log_id }}</td>
-                            <td>{{ $log->user->username ?? 'N/A' }}</td>
-                            <td>
-                                <span class="badge {{ $log->role === 'admin' ? 'bg-danger' : 'bg-primary' }}">
-                                    {{ ucfirst($log->role) }}
-                                </span>
-                            </td>
-                            <td>{{ $log->action_type }}</td>
-                            <td class="text-truncate" style="max-width: 250px;" title="{{ $log->details }}">
-                                {{ $log->details }}
-                            </td>
-                            <td>{{ \Carbon\Carbon::parse($log->created_at)->format('Y-m-d H:i') }}</td>
+                            <th><i class="bi bi-hash"></i> Log ID</th>
+                            <th><i class="bi bi-person-badge"></i> User</th>
+                            <th><i class="bi bi-person-gear"></i> Role</th>
+                            <th><i class="bi bi-gear"></i> Action</th>
+                            <th><i class="bi bi-card-text"></i> Details</th>
+                            <th><i class="bi bi-clock-history"></i> Timestamp</th>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="6" class="text-center text-white-50 py-3">ไม่มีข้อมูล Log</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        @forelse($logs as $log)
+                            <tr>
+                                <td>{{ $log->log_id }}</td>
+                                <td>{{ $log->user->username ?? 'N/A' }}</td>
+                                <td>
+                                    <span class="badge {{ $log->role === 'admin' ? 'bg-danger' : 'bg-primary' }}">
+                                        {{ ucfirst($log->role) }}
+                                    </span>
+                                </td>
+                                <td>{{ $log->action_type }}</td>
+                                <td class="text-truncate" style="max-width: 250px;" title="{{ $log->details }}">
+                                    {{ $log->details }}
+                                </td>
+                                <td>{{ \Carbon\Carbon::parse($log->created_at)->format('Y-m-d H:i') }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="6" class="text-center text-black-50 py-3">ไม่มีข้อมูล Log</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
 
-        <!-- Pagination -->
-        <div class="mt-3 d-flex justify-content-center">
-            {{ $logs->links() }}
+            <!-- Pagination -->
+            <div class="mt-3 d-flex justify-content-center">
+                {{ $logs->links() }}
+            </div>
         </div>
     </div>
-</div>
+
+    {{-- SweetAlert2 --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('clearLogsBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Activity Logs',
+                text: 'คุณแน่ใจหรือไม่ที่จะลบ Log ทั้งหมด?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'ลบ',
+                cancelButtonText: 'ยกเลิก',
+                confirmButtonColor: '#dc3545', // สีแดง
+                cancelButtonColor: '#6c757d' // สีเทา
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('clearLogsForm').submit();
+                }
+            });
+        });
+    </script>
 @endsection
