@@ -1,97 +1,103 @@
-@extends('layout.userlayout')
-
-@section('title', 'My Bookings')
+@extends('layout.adminlayout')
 
 @section('content')
-<h3 class="mb-4">My Bookings</h3>
+<div class="container my-5">
+    <h1 class="mb-4 fw-bold text-primary">จัดการบัญชีผู้ใช้</h1>
 
-@if($bookings->isEmpty())
-    <div class="alert alert-info text-center">คุณยังไม่มีการจองห้องซ้อมดนตรี</div>
-@else
+    {{-- ข้อความสำเร็จ --}}
+    @if(session('success'))
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'สำเร็จ!',
+                    text: "{{ session('success') }}",
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            });
+        </script>
+    @endif
+
+    {{-- ตารางผู้ใช้ --}}
     <div class="table-responsive">
-        <table class="table table-striped align-middle">
-            <thead>
+        <table class="table align-middle text-center mb-0" style="background: rgba(255,255,255,0.6); backdrop-filter: blur(12px); border-radius: 12px;">
+            <thead class="table-light">
                 <tr>
-                    <th>Booking ID</th>
-                    <th>Room</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Total Price</th>
-                    <th>Status</th>
-                    <th>Actions</th>
+                    <th>ID</th>
+                    <th class="text-start">ชื่อผู้ใช้</th>
+                    <th class="text-start">อีเมล</th>
+                    <th>เบอร์โทร</th>
+                    <th>Role</th>
+                    <th class="text-center">การจัดการ</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($bookings as $b)
+                @foreach($users as $user)
                 <tr>
-                    <td>{{ $b->booking_id }}</td>
-                    <td>{{ $b->room->name }}</td>
-                    <td>{{ $b->start_time }}</td>
-                    <td>{{ $b->end_time }}</td>
-                    <td>{{ number_format($b->total_price,2) }}</td>
-                    <td>{{ ucfirst($b->status) }}</td>
+                    <td>{{ $user->user_id }}</td>
+                    <td class="text-start fw-semibold">{{ $user->username }}</td>
+                    <td class="text-start">{{ $user->email }}</td>
+                    <td>{{ $user->phone }}</td>
                     <td>
-                        @php
-                            $hoursBefore = \Carbon\Carbon::parse($b->start_time)->diffInHours(now(), false);
-                            $refund = ($hoursBefore >= 24) ? 80 : 50;
-                        @endphp
+                        <span class="badge {{ $user->role === 'admin' ? 'bg-primary' : 'bg-secondary' }}">
+                            {{ ucfirst($user->role) }}
+                        </span>
+                    </td>
+                    <td class="text-center">
+                        <div class="d-flex justify-content-center gap-2 flex-wrap">
+                            <a href="{{ route('admin.editUser', $user->user_id) }}" class="btn btn-sm btn-outline-primary" data-bs-toggle="tooltip" title="แก้ไขผู้ใช้">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
 
-                        <button class="btn btn-sm btn-danger cancel-btn" 
-                                data-id="{{ $b->booking_id }}" 
-                                data-refund="{{ $refund }}"
-                                @if($b->status == 'cancelled') disabled style="opacity:0.6;" @endif>
-                            Cancel
-                        </button>
+                            {{-- Form รีเซ็ตรหัสผ่าน --}}
+                            <form class="reset-password-form m-0" action="{{ route('admin.users.resetPassword', $user->user_id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-outline-danger" data-bs-toggle="tooltip" title="รีเซ็ตรหัสผ่าน">
+                                    <i class="bi bi-key-fill"></i>
+                                </button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+</div>
 
-    {{ $bookings->links() }}
-@endif
-
-@endsection
-
-@section('scripts')
+@push('scripts')
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.cancel-btn');
+document.addEventListener('DOMContentLoaded', function () {
+    // Bootstrap tooltip
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
 
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            const bookingId = this.dataset.id;
-            const refund = this.dataset.refund;
-            const btn = this;
-
+    // SweetAlert สำหรับรีเซ็ตรหัสผ่าน
+    document.querySelectorAll('.reset-password-form').forEach(form => {
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
             Swal.fire({
-                title: `Cancel Booking #${bookingId}?`,
-                html: `คุณยืนยันที่จะยกเลิกการจองนี้?<br>เงื่อนไขคืนเงิน: คืนเงิน ${refund}%`,
+                title: 'ยืนยันการรีเซ็ตรหัสผ่าน',
+                text: 'คุณแน่ใจว่าจะรีเซ็ตรหัสผ่านผู้ใช้รายนี้?',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'ยืนยันการยกเลิก',
-                cancelButtonText: 'ยกเลิก'
+                confirmButtonText: 'รีเซ็ต',
+                cancelButtonText: 'ยกเลิก',
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d'
             }).then((result) => {
-                if (result.isConfirmed) {
-                    // สร้างฟอร์มเพื่อส่ง POST ไปยัง route cancel
-                    const form = document.createElement('form');
-                    form.method = 'POST';
-                    form.action = `/user/bookings/${bookingId}/cancel`; // ปรับตาม route จริง
-                    form.innerHTML = `@csrf`;
-                    document.body.appendChild(form);
+                if(result.isConfirmed){
                     form.submit();
-
-                    // ปุ่ม disabled ทันที
-                    btn.disabled = true;
-                    btn.style.opacity = 0.6;
                 }
             });
         });
     });
 });
 </script>
+@endpush
 @endsection
